@@ -1,0 +1,7 @@
+{
+  "name": "fsPick",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
