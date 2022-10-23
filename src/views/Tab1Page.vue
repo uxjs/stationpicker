@@ -13,20 +13,22 @@
         </ion-toolbar>
       </ion-header> -->
     
-      <ExploreContainer name="Tab 1 First page" />
+      <!-- <ExploreContainer name="Tab 1 First page" /> -->
 
+      <FsPick />
       
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { defineComponent } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import ExploreContainer from '@/components/ExploreContainer.vue';
+import FsPick from '@/components/FsPick.vue';
 
-export default  defineComponent({
+defineComponent({
   name: 'Tab1Page',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { FsPick, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
 });
 </script>

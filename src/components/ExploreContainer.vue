@@ -1,104 +1,195 @@
+
 <template>
-  <div id="container">
+  
+  
+ 
+  <ion-content class="ion-padding">
     
+    <ion-modal ref="modal" trigger="open-modal" @willDismiss="onWillDismiss">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button @click="clickme()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Fire Station Selector</ion-title>
+          <ion-buttons slot="end">
+            <ion-button :strong="true" @click="confirm()">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Enter Fire Station Number</ion-label>
+          <ion-input ref="input" type="text" placeholder="FS#"></ion-input>
+        </ion-item>
+      </ion-content>
+    </ion-modal>
+  
+  
+  </ion-content>
+  
+  <div id="container">
+
     <!-- <strong>{{ name }}</strong> -->
     <!-- <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-
 
     <!-- First Name: <div id="howdy"><div>000</div></div> <input type="text" id="myText" value="Mickey"><br> -->
     <!-- FS 004 -->
 
+
+
+    <ion-item>
+     
+      <ion-label>FS</ion-label>
+      <ion-input id="open-modal"></ion-input>
+    </ion-item>
     <ion-card>
-  <ion-card-header>
-    <ion-card-title id="howdy" @mouseover="fsMouseOver" ><div>000</div></ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-  </ion-card-header>
 
-  <ion-card-content>
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>
+      <ion-card-header>
+        <!-- @mouseover="fsMouseOver" -->
+        <ion-card-title id="howdy" @mouseenter="fsMouseEnter" @mouseleave="fsMouseLeave">
+        
+        </ion-card-title>
+
+ 
+      </ion-card-header>
 
 
-
+    </ion-card>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ionCard, ionCardTitle, ionCardSubtitle, ionCardContent } from "vue";
+<script setup lang="ts">
+import { defineComponent, ref } from "vue";
+import {
+  IonButtons,
+  IonButton,
+  IonModal,
+  IonHeader,
+  IonContent,
+  IonToolbar,
+  IonTitle,
+  IonItem,
+  IonInput,
+  IonLabel,
+} from '@ionic/vue';
+import { OverlayEventDetail } from '@ionic/core/components';
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
 
-export default defineComponent({
-
+} from "@ionic/vue";
+  defineComponent({
   name: "ExploreContainer",
   props: {
     name: String,
   },
 
-  components: {ionCard, ionCardTitle, ionCardSubtitle, ionCardContent},
+  components: {
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
 
-  // on click handler
-  
+    //modal-below
+    IonButtons,
+    IonButton,
+    IonModal,
+    IonHeader,
+    IonContent,
+    IonToolbar,
+    IonTitle,
+    IonItem,
+    IonInput,
+    IonLabel,
+  },
+  data() {
+    return {
+      message: 'This modal example uses triggers to automatically open a modal when the button is clicked.',
+    };
+  },
+
   methods: {
-    fsMouseOver(event) {
-      console.log("Mouse over");
-      undisableTxt();
-      //make editable
-      //this.$refs.fs004.readonly = false;
 
-      // // `this` inside methods points to the current active instance
-      // alert(`Hello ${this.name}!`)
-      // // `event` is the native DOM event
-      // if (event) {
-      //   alert(event.target.tagName)
-      // }
-    }
-  }
+    cancel() {
+      this.$refs.modal.$el.dismiss(null, 'cancel');
+    },
+    confirm() {
+      const name = this.$refs.input.$el.value;
+      this.$refs.modal.$el.dismiss(name, 'confirm');
+    },
+    onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
+      if (ev.detail.role === 'confirm') {
+        this.message = `Hello, ${ev.detail.data}!`;
+      }
+    },
+
+  // fsMouseEnter: function (event) {
+  //   console.log("Mouse Enter");
+  //   // undisableTxt();
+  //   (document.getElementById("howdy") as HTMLElement).innerHTML = "7"; //getValue();
+  // },
+
+  // fsMouseLeave: function (event) {
+  //   console.log("Mouse Exit");
+  //   //disableTxt();
+
+  //   var value = (document.getElementById("tbox") as HTMLInputElement)?.value;
+
+  //   //  (document.getElementById("howdy") as HTMLElement).innerHTML = `<div>${value}</div>`;
+  //   (
+  //     document.getElementById("howdy") as HTMLElement
+  //   ).innerHTML = `<div>88</div>`;
+  // },
+
+  clickme: function () {
+    console.log("yeah");
+  },
+}, //methods
+
 });
-
 
 //bringing in from w3schools
 
-function getValue(){
+function getValue() {
+  //get plan div text
+  var element = document.getElementById("howdy");
+  var value = (element?.childNodes[0] as HTMLElement).innerText;
+  var rtnval;
 
-//get plan div text
-var element = document.getElementById("howdy");
-var value = element.childNodes[0].innerText;
-  
-  
-  if(value){
-    var rtnval = `<input type="text" id="tbox" value="${value}">`;
-  }else{
-  
-  //alert('fast-company');
-  
-  //get textbox value
-  
-  var value = document.getElementById("tbox").value;
-  
-  //if (tbvalue) alert('the value is: ' + tbvalue);    
-  
-    var rtnval = `<input type="text" id="tbox" value="${value}">`;
+  if (value) {
+    rtnval = `<input type="text" id="tbox" value="${value}">`;
+  } else {
+    //alert('fast-company');
+
+    //get textbox value
+
+    //var value = document.getElementById("tbox").value;
+    var value2 = (document.getElementById("tbox") as HTMLInputElement).value;
+
+    //if (tbvalue) alert('the value is: ' + tbvalue);
+
+    rtnval = `<input type="text" id="tbox" value="${value2}">`;
   }
-  
-  //alert('the value is: ' + rtnval);    
-
-  
-  return rtnval; 
 }
 
+// function disableTxt() {
+//   //var value = document.getElementById("tbox").value;
+//   var value = (document.getElementById("tbox") as HTMLInputElement).value;
 
-function disableTxt() {
-var value = document.getElementById("tbox").value;
-//document.getElementById("myText").disabled = true;
-document.getElementById("howdy").innerHTML = `<div>${value}</div>`; 
-}
+//   //document.getElementById("myText").disabled = true;
+//   (document.getElementById("howdy") as HTMLElement).innerHTML = `<div>${value}</div>`;
+//   //(document.getElementById("howdy") as HTMLElement).innerHTML = `<div>3</div>`;
 
-function undisableTxt() {
-//document.getElementById("myText").disabled = false;
-document.getElementById("howdy").innerHTML = getValue();
-  
-}
+// }
 
+// function undisableTxt() {
+//   //document.getElementById("myText").disabled = false;
+//   (document.getElementById("howdy") as HTMLElement).innerHTML = getValue();
+
+// }
 
 
 </script>
