@@ -39,7 +39,6 @@
       IonHeader,
       IonContent,
       IonToolbar,
-      IonTitle,
       IonItem,
       IonInput,
       IonLabel,
@@ -67,19 +66,16 @@
       },
       methods: {
         cancel() {
-          this.$refs.modal.$el.dismiss(null, 'cancel');
+          (this.$refs.modal as any).$el.dismiss(null, 'cancel');
         },
         confirm() {
-          const name = this.$refs.input.$el.value;
-          this.$refs.modal.$el.dismiss(name, 'confirm');
-
-
+        const name = (this.$refs.input as any).$el.value;
+        (this.$refs.modal as any).$el.dismiss(name, 'confirm');
+        
         },
         onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
           if (ev.detail.role === 'confirm') {
-            this.$refs.output.$el.value = ev.detail.data;
-            //this.message = `Hello, ${ev.detail.data}!`;
-
+            (this.$refs.output as any).$el.value = ev.detail.data;
           }
         },
       },
