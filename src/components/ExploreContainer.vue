@@ -91,7 +91,7 @@ import {
     IonCard,
     IonCardHeader,
     IonCardTitle,
-    IonCardSubtitle,
+    //IonCardSubtitle,
 
     //modal-below
     IonButtons,

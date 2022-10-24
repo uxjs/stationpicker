@@ -55,7 +55,7 @@
         IonHeader,
         IonContent,
         IonToolbar,
-        IonTitle,
+        //IonTitle,
         IonItem,
         IonInput,
         IonLabel,

@@ -24,11 +24,11 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+//import ExploreContainer from '@/components/ExploreContainer.vue';
 import FsPick from '@/components/FsPick.vue';
 
 defineComponent({
   name: 'Tab1Page',
-  components: { FsPick, ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
+  components: { FsPick, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
 });
 </script>
