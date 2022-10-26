@@ -209,6 +209,10 @@ import {
   IonInput,
   IonLabel,
   IonChip,
+  IonCol,
+  IonRow,
+  IonGrid,
+  IonList,
 } from '@ionic/vue';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { defineComponent, ref } from 'vue';
@@ -221,10 +225,14 @@ export default defineComponent({
     IonHeader,
     IonContent,
     IonToolbar,
-    //IonTitle,
     IonItem,
     IonInput,
     IonLabel,
+    IonChip,
+    IonCol,
+    IonRow,
+    IonGrid,
+    IonList,
   },
   data() {
     return {
@@ -262,7 +270,7 @@ export default defineComponent({
          a = pListElements[i];
          txtValue = a.textContent;
 
-        // filter = (this.$refs.input as string).toUpperCase();
+        filter = (this.$refs.input as string).toUpperCase();
          
 
             //  if (txtValue!.toUpperCase().indexOf(filter) > -1) {
