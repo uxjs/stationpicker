@@ -9,7 +9,7 @@
       <ion-input id="open-modal" ref="output" type="text" placeholder="Fire Station"></ion-input>
     </ion-item>
     <p>{{ message }}</p>
-    <ion-modal ref="modal" trigger="open-modal" @willDismiss="onWillDismiss">
+    <ion-modal ref="modal" trigger="open-modal" @load="onLoad" @willDismiss="onWillDismiss">
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -77,9 +77,9 @@
         <!-- listing below -->
         <ion-list>
 
-          <ion-item>
+          <ion-item >
             <ion-label>
-              <ion-chip class="plist" @click="stnsel('003'); confirm()" :outline="true">003</ion-chip> Pokémon Yellow
+              <ion-chip id="i003" class="plist" @click="stnsel('003'); confirm()" :outline="true">003</ion-chip> Pokémon Yellow
             </ion-label>
           </ion-item>
           <ion-item>
@@ -181,7 +181,7 @@
           </ion-item>
           <ion-item>
             <ion-label>
-              <ion-chip class="plist" @click="stnsel('042'); confirm()" :outline="true">042</ion-chip> Nas
+              <ion-chip display="false" class="plist" @click="stnsel('042'); confirm()" :outline="true">042</ion-chip> Nas
             </ion-label>
 
           </ion-item>
@@ -253,7 +253,9 @@ export default defineComponent({
         (this.$refs.output as any).$el.value = ev.detail.data;
       }
     },
-
+    onLoad(){
+      console.log('onload');
+    },
     stnsel(fsnbr: string) {
       (this.$refs.input as any).$el.value = fsnbr;
       this.collectPListItems();
@@ -264,22 +266,29 @@ export default defineComponent({
       let i, a, txtValue, filter;
       const pListElements = document.getElementsByClassName('plist'); //[0]
       
-      //console.log(pListElements.textContent)
+      console.log(pListElements[0].textContent)
+      //document.getElementById('i003')!.innerHTML = 'typescipt sucks';
+
 
       for (i = 0; i < pListElements.length; i++) {
          a = pListElements[i];
          txtValue = a.textContent;
 
-        filter = (this.$refs.input as string).toUpperCase();
+        filter = (this.$refs.input as any).$el.value.toUpperCase();
          
+        //console.log(filter)
 
-            //  if (txtValue!.toUpperCase().indexOf(filter) > -1) {
-            //   pListElements[i].style.display = "";
-            // } else {
-            //   pListElements[i].style.display = "none";
-            // }
+             if (txtValue!.toUpperCase().indexOf(filter) > -1) {
+             //console.log('-- ' + (pListElements[i] as HTMLElement).style.display);
+              //(pListElements[i] as HTMLElement).style.display = '';
+              //(document.getElementById('i003') as HTMLDivElement)!.style.display = 'none';
 
-         console.log(txtValue);
+            } else {
+              //console.log('++ ' + (pListElements[i] as HTMLElement).style.display);
+              //(pListElements[i] as HTMLElement).style.display = 'none';
+            }
+
+         //console.log(txtValue);
       }
     },
 

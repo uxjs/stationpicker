@@ -5,7 +5,7 @@
  
   <ion-content class="ion-padding">
     
-    <ion-modal ref="modal" trigger="open-modal" @willDismiss="onWillDismiss">
+    <ion-modal ref="modal" trigger="open-modal" @load="onload" @willDismiss="onWillDismiss">
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -46,10 +46,10 @@
     <ion-card>
 
       <ion-card-header>
-        <!-- @mouseover="fsMouseOver" -->
-        <ion-card-title id="howdy" @mouseenter="fsMouseEnter" @mouseleave="fsMouseLeave">
         
-        </ion-card-title>
+        <!-- <ion-card-title id="howdy" @mouseenter="fsMouseEnter" @mouseleave="fsMouseLeave"> -->
+        
+  
 
  
       </ion-card-header>
@@ -125,7 +125,9 @@ import {
         this.message = `Hello, ${ev.detail.data}!`;
       }
     },
-
+onload(){
+cps
+},
   // fsMouseEnter: function (event) {
   //   console.log("Mouse Enter");
   //   // undisableTxt();
