@@ -1,11 +1,11 @@
 
 <template>
-  
-  
- 
+
+
+
   <ion-content class="ion-padding">
-    
-    <ion-modal ref="modal" trigger="open-modal" @load="onload" @willDismiss="onWillDismiss">
+
+    <ion-modal ref="modal" trigger="open-modal" @Mounted="onload" @willDismiss="onWillDismiss">
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -24,10 +24,10 @@
         </ion-item>
       </ion-content>
     </ion-modal>
-  
-  
+
+
   </ion-content>
-  
+
   <div id="container">
 
     <!-- <strong>{{ name }}</strong> -->
@@ -39,19 +39,19 @@
 
 
     <ion-item>
-     
+
       <ion-label>FS</ion-label>
       <ion-input id="open-modal"></ion-input>
     </ion-item>
     <ion-card>
 
       <ion-card-header>
-        
-        <!-- <ion-card-title id="howdy" @mouseenter="fsMouseEnter" @mouseleave="fsMouseLeave"> -->
-        
-  
 
- 
+        <!-- <ion-card-title id="howdy" @mouseenter="fsMouseEnter" @mouseleave="fsMouseLeave"> -->
+
+
+
+
       </ion-card-header>
 
 
@@ -77,11 +77,9 @@ import { OverlayEventDetail } from '@ionic/core/components';
 import {
   IonCard,
   IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
 
 } from "@ionic/vue";
-  defineComponent({
+defineComponent({
   name: "ExploreContainer",
   props: {
     name: String,
@@ -90,9 +88,6 @@ import {
   components: {
     IonCard,
     IonCardHeader,
-    IonCardTitle,
-    //IonCardSubtitle,
-
     //modal-below
     IonButtons,
     IonButton,
@@ -125,31 +120,29 @@ import {
         this.message = `Hello, ${ev.detail.data}!`;
       }
     },
-onload(){
-cps
-},
-  // fsMouseEnter: function (event) {
-  //   console.log("Mouse Enter");
-  //   // undisableTxt();
-  //   (document.getElementById("howdy") as HTMLElement).innerHTML = "7"; //getValue();
-  // },
 
-  // fsMouseLeave: function (event) {
-  //   console.log("Mouse Exit");
-  //   //disableTxt();
+    // fsMouseEnter: function (event) {
+    //   console.log("Mouse Enter");
+    //   // undisableTxt();
+    //   (document.getElementById("howdy") as HTMLElement).innerHTML = "7"; //getValue();
+    // },
 
-  //   var value = (document.getElementById("tbox") as HTMLInputElement)?.value;
+    // fsMouseLeave: function (event) {
+    //   console.log("Mouse Exit");
+    //   //disableTxt();
 
-  //   //  (document.getElementById("howdy") as HTMLElement).innerHTML = `<div>${value}</div>`;
-  //   (
-  //     document.getElementById("howdy") as HTMLElement
-  //   ).innerHTML = `<div>88</div>`;
-  // },
+    //   var value = (document.getElementById("tbox") as HTMLInputElement)?.value;
 
-  clickme: function () {
-    console.log("yeah");
-  },
-}, //methods
+    //   //  (document.getElementById("howdy") as HTMLElement).innerHTML = `<div>${value}</div>`;
+    //   (
+    //     document.getElementById("howdy") as HTMLElement
+    //   ).innerHTML = `<div>88</div>`;
+    // },
+
+    clickme: function () {
+      console.log("yeah");
+    },
+  }, //methods
 
 });
 

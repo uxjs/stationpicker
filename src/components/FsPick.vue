@@ -9,7 +9,7 @@
       <ion-input id="open-modal" ref="output" type="text" placeholder="Fire Station"></ion-input>
     </ion-item>
     <p>{{ message }}</p>
-    <ion-modal ref="modal" trigger="open-modal" @load="onLoad" @willDismiss="onWillDismiss">
+    <ion-modal ref="modal" trigger="open-modal" @ionModalDidPresent="onLoad" @willDismiss="onWillDismiss">
       <ion-header>
         <ion-toolbar>
           <ion-buttons slot="start">
@@ -23,8 +23,8 @@
       </ion-header>
       <ion-content class="ion-padding">
         <ion-item>
-          <ion-label position="stacked">Enter Fire Station Number</ion-label>
-          <ion-input ref="input" type="text" placeholder="Fire Station"></ion-input>
+          <ion-label position="stacked">Fire Station / Special-Duty Location</ion-label>
+          <ion-input @keyup="collectPListItems" ref="input" type="text" placeholder="Fire Station"></ion-input>
         </ion-item>
 
 
@@ -77,27 +77,27 @@
         <!-- listing below -->
         <ion-list>
 
-          <ion-item >
+          <ion-item id="i003">
             <ion-label>
-              <ion-chip id="i003" class="plist" @click="stnsel('003'); confirm()" :outline="true">003</ion-chip> Pokémon Yellow
+              <ion-chip class="plist" @click="stnsel('003'); confirm()" :outline="true">003</ion-chip> Pokémon Yellow
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i004">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('004'); confirm()" :outline="true">004</ion-chip> Mega Man X
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i007">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('007'); confirm()" :outline="true">007</ion-chip> Porsche 911
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i009">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('009'); confirm()" :outline="true">009</ion-chip> Audi R8
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i011">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('011'); confirm()" :outline="true">011</ion-chip> Dodge Charger
             </ion-label>
@@ -105,81 +105,81 @@
 
 
 
-          <ion-item>
+          <ion-item id="i012">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('012'); confirm()" :outline="true">012</ion-chip> Ford Mustang
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i014">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('014'); confirm()" :outline="true">014</ion-chip> Dodge Challenger
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i016">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('016'); confirm()" :outline="true">016</ion-chip> Audi A5
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i018">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('018'); confirm()" :outline="true">018</ion-chip> Jaguar F-Type
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i020">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('020'); confirm()" :outline="true">020</ion-chip> Chevrolet Corvette
             </ion-label>
           </ion-item>
 
 
-          <ion-item>
+          <ion-item id="i022">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('022'); confirm()" :outline="true">022</ion-chip> Mazda MX-5 Miata
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i023">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('023'); confirm()" :outline="true">023</ion-chip> The Notorious B.I.G.
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i024">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('024'); confirm()" :outline="true">024</ion-chip> Jay-Z
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="iEMN">
             <ion-label>
-              <ion-chip class="plist" @click="stnsel('028'); confirm()" :outline="true">028</ion-chip> Eminem
+              <ion-chip class="plist" @click="stnsel('EMN'); confirm()" :outline="true">EMN</ion-chip> Eminem
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i029">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('029'); confirm()" :outline="true">029</ion-chip> Rakim
             </ion-label>
           </ion-item>
 
 
-          <ion-item>
+          <ion-item id="i030">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('030'); confirm()" :outline="true">030</ion-chip> Kendrick Lamar
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i032">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('032'); confirm()" :outline="true">032</ion-chip> Ghostface Killah
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i033">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('033'); confirm()" :outline="true">033</ion-chip> Lauryn Hill
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i037">
             <ion-label>
               <ion-chip class="plist" @click="stnsel('037'); confirm()" :outline="true">037</ion-chip> Andre 3000
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item id="i042">
             <ion-label>
               <ion-chip display="false" class="plist" @click="stnsel('042'); confirm()" :outline="true">042</ion-chip> Nas
             </ion-label>
@@ -254,11 +254,11 @@ export default defineComponent({
       }
     },
     onLoad(){
-      console.log('onload');
+      console.log('onloa2d');
     },
     stnsel(fsnbr: string) {
       (this.$refs.input as any).$el.value = fsnbr;
-      this.collectPListItems();
+      //this.collectPListItems();
     },
 
     collectPListItems() {
@@ -266,7 +266,7 @@ export default defineComponent({
       let i, a, txtValue, filter;
       const pListElements = document.getElementsByClassName('plist'); //[0]
       
-      console.log(pListElements[0].textContent)
+      //console.log(pListElements[0].textContent)
       //document.getElementById('i003')!.innerHTML = 'typescipt sucks';
 
 
@@ -276,16 +276,27 @@ export default defineComponent({
 
         filter = (this.$refs.input as any).$el.value.toUpperCase();
          
-        //console.log(filter)
-
-             if (txtValue!.toUpperCase().indexOf(filter) > -1) {
+        let tmpRowTxtVal = 'i' + (pListElements[i] as HTMLElement).textContent;
+        
+        if (txtValue!.toUpperCase().indexOf(filter) > -1) {
+         
+          (pListElements[i] as HTMLElement).style.display = '';
+          (document.getElementById(tmpRowTxtVal) as HTMLDivElement)!.style.display = '';
+          
+          // console.log('filter_1 ' + filter);
              //console.log('-- ' + (pListElements[i] as HTMLElement).style.display);
-              //(pListElements[i] as HTMLElement).style.display = '';
               //(document.getElementById('i003') as HTMLDivElement)!.style.display = 'none';
 
             } else {
+
+              (pListElements[i] as HTMLElement).style.display = 'none';
+              (document.getElementById(tmpRowTxtVal) as HTMLDivElement)!.style.display = 'none';
+              
+
+              //console.log(tmpRowTxtVal);
+
+              //console.log('filter_2 ' + filter);
               //console.log('++ ' + (pListElements[i] as HTMLElement).style.display);
-              //(pListElements[i] as HTMLElement).style.display = 'none';
             }
 
          //console.log(txtValue);
